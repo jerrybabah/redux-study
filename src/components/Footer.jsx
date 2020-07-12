@@ -1,14 +1,15 @@
 import React from 'react';
-import FilterLink from '../containers/FilterLink';
+// import FilterLink from '../containers/FilterLink';
+import Link from '../components/Link';
 
 export default function Footer() {
   return (
     <p>
-      Show: <FilterLink filter="SHOW_ALL">All</FilterLink>
+      Show: <Link filter="SHOW_ALL">All</Link>
       {', '}
-      <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>
+      <Link filter="SHOW_ACTIVE">Active</Link>
       {', '}
-      <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
+      <Link filter="SHOW_COMPLETED">Completed</Link>
     </p>
   );
 }
