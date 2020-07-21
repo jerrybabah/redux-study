@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, Reducer, Action, ActionCreator, StoreEnhancer, Store } from 'redux';
 import todoApp from './reducers';
 import App from './components/App';
 // import { addTodo, completeTodo, setVisibilityFilter, VisibilityFilters } from './actions';
