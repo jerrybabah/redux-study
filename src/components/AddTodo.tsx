@@ -1,10 +1,21 @@
 import React from 'react';
+import { Dispatch } from 'redux';
+import { connect, ConnectedProps } from 'react-redux';
+import { addTodo } from '../store/todo/action';
 
-export interface IAddTodoProps {
-  onSubmit: () => void;
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    onSubmit: (text: string) => {
+      dispatch(addTodo(text));
+    },
+  }
 }
 
-const AddTodo = ({ onSubmit }: IAddTodoProps) => {
+const connector = connect(null, mapDispatchToProps);
+
+export type AddTodoProps = ConnectedProps<typeof connector>;
+
+const AddTodo = ({ onSubmit }: AddTodoProps) => {
   let input: HTMLInputElement | null;
 
   return (
@@ -15,7 +26,7 @@ const AddTodo = ({ onSubmit }: IAddTodoProps) => {
           return;
         }
 
-        onSubmit();
+        onSubmit(input.value);
         input.value = '';  
     }}>
       <input
@@ -28,6 +39,4 @@ const AddTodo = ({ onSubmit }: IAddTodoProps) => {
   );
 }
 
-// TODO: redux;
-
-export default AddTodo;
+export default connector(AddTodo);
