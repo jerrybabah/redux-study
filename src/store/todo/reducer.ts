@@ -1,3 +1,7 @@
+/**
+ * reducer 파일에서 reducer를 정의한다.
+ */
+import { Reducer } from 'redux';
 import { TodosState, ADD_TODO, COMPLETE_TODO, TodoActionTypes } from './type';
 
 const initialState: TodosState = [];
@@ -17,7 +21,7 @@ function completeTodo(state: TodosState, index: number): TodosState {
   return [...state];
 }
 
-export function todosReducer(state = initialState, action: TodoActionTypes): TodosState {
+export const todosReducer: Reducer<TodosState, TodoActionTypes> = (state = initialState, action) => {
   switch(action.type) {
     case ADD_TODO:
       return addTodo(state, action.text);
@@ -26,4 +30,4 @@ export function todosReducer(state = initialState, action: TodoActionTypes): Tod
     default:
       return state;
   }
-}
+};

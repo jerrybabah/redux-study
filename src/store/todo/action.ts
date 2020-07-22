@@ -1,15 +1,19 @@
+/**
+ * action 파일에서 action creator를 정의한다.
+ */
+import { ActionCreator } from 'redux';
 import { ADD_TODO, COMPLETE_TODO, TodoActionTypes } from './type';
 
-export function addTodo(text: string): TodoActionTypes {
+export const addTodo: ActionCreator<TodoActionTypes> = (text: string) => {
   return {
     type: ADD_TODO,
     text,
-  }
+  };
 }
 
-export function completeTodo(index: number): TodoActionTypes {
+export const completeTodo: ActionCreator<TodoActionTypes> = (index: number) => {
   return {
     type: COMPLETE_TODO,
     index,
-  }
+  };
 }
