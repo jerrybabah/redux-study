@@ -31,9 +31,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-export type TodoListProps = ConnectedProps<typeof connector>;
+type TodoListProps = ConnectedProps<typeof connector>;
 
-const TodoList = ({ todos, onTodoClick }: TodoListProps) => {
+const TodoList: React.FC<TodoListProps> = ({ todos, onTodoClick }) => {
   return (
     <ul>
       {todos.map((todo, index) => {

@@ -13,9 +13,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
 const connector = connect(null, mapDispatchToProps);
 
-export type AddTodoProps = ConnectedProps<typeof connector>;
+type AddTodoProps = ConnectedProps<typeof connector>;
 
-const AddTodo = ({ onSubmit }: AddTodoProps) => {
+const AddTodo: React.FC<AddTodoProps> = ({ onSubmit }) => {
   let input: HTMLInputElement | null;
 
   return (

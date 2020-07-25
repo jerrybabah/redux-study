@@ -7,6 +7,7 @@ import { setVisibilityFilter } from '../store/visibilityFilter/action';
 
 export interface LinkContainerProps {
   filter: FilterType;
+  children: React.ReactNode; // React.FC 처럼 children을 자동으로 처리해주는 방법이 없어 보인다. container component가 children을 전달 받는다면 명시적으로 적어주자.
 }
 
 const mapStateToProps = (state: RootState, ownProps: LinkContainerProps) => {
@@ -25,9 +26,9 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps: LinkContainerProps) =>
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-export type LinkProps = ConnectedProps<typeof connector> & { children: React.ReactNode };
+type LinkProps = ConnectedProps<typeof connector>;
 
-const Link = ({ onClick, active, children }: LinkProps) => {
+const Link: React.FC<LinkProps> = ({ onClick, active, children }) => {
   if (active) {
     return (
       <span>{children}</span>
